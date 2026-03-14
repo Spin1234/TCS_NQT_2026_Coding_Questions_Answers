@@ -1,6 +1,6 @@
 # TCS_NQT_2026_Coding_Questions_Answers
 
-### 1. cryptic_number
+###1. cryptic_number
 
 ### Code:
 ```cpp
