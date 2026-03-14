@@ -2,7 +2,7 @@
 
 ### 1. cryptic_number
 
-### Code:
+Code:
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -47,7 +47,7 @@ int main(){
 }
 ```
 ### 2. Rotate Array By D:
-code:
+Code:
 ```cpp
 #include<bits/stdc++.h>
 using namespace std;
@@ -112,5 +112,154 @@ int main(){
         cout<< arr[i]<< " ";
     }
     
+}
+```
+
+### 3. pPrime Factor
+Code:
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    int temp=n;
+    vector<int>ans;
+    int i=3;
+    while(n>1){
+        if(n%2==0){
+            ans.push_back(2);
+            n/=2;
+        }
+        else{
+            if(n%i==0 && i*i<=temp){
+                ans.push_back(i);
+                n/=i;
+            }else if(n%i!=0 and i*i<=temp){
+                i+=2;
+            }
+        }
+    }
+    for(auto it: ans){
+        cout<<it<<" ";
+    }
+}
+```
+
+### 4. Move zeros to end
+Code:
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+    cin>>n;
+    vector<int>arr(n);
+
+    for(int i=0; i<n;i++){
+        cin>>arr[i];
+    }
+
+    int index=0;
+
+    for(int i=0;i<n;i++){
+        if(arr[i]!=0){
+            arr[index]=arr[i];
+            index++;
+        }
+    }
+
+    for(int i=index;i<n;i++){
+        arr[i]=0;
+    }
+
+    for(auto it: arr){
+        cout<<it<<" ";
+    }
+    
+}
+```
+### 5. good_bad_number
+Code:
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int n;
+
+    cin>>n;
+    while(n>0){
+        int num;
+        cin>>num;
+        int original=num;
+        int sum=0;
+        while(num>0){
+            int r=num%10;
+            sum+=r;
+            num/=10;
+        }
+        if(original%sum==0){
+            cout<<"Good Number"<<endl;
+        }else{
+            cout<<"Bad Number"<<endl;
+        }
+        n--;
+    }
+}
+```
+### 6. Anagram
+
+Given two non-empty strings s1 and s2, consisting only of lowercase English letters, determine whether they are anagrams of each other or not.
+Two strings are considered anagrams if they contain the same characters with exactly the same frequencies, regardless of their order.
+
+Examples:
+
+Input: s1 = "geeks" s2 = "kseeg"
+Output: true 
+Explanation: Both the string have same characters with same frequency. So, they are anagrams.
+Input: s1 = "allergy", s2 = "allergyy" 
+Output: false 
+Explanation: Although the characters are mostly the same, s2 contains an extra 'y' character. Since the frequency of characters differs, the strings are not anagrams. 
+Input: s1 = "listen", s2 = "lists" 
+Output: false 
+Explanation: The characters in the two strings are not the same — some are missing or extra. So, they are not anagrams.
+Constraints:
+1 ≤ s1.size(), s2.size() ≤ 105
+s1, s2 consists of lowercase English letters.
+
+Code:
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+bool areAnagrams(string s1, string s2) {
+    if (s1.length() != s2.length()) return false;
+
+    int freq[26] = {0};
+
+    for (char c : s1)
+        freq[c - 'a']++;
+
+    for (char c : s2)
+        freq[c - 'a']--;
+
+    for (int i = 0; i < 26; i++)
+        if (freq[i] != 0)
+            return false;
+
+    return true;
+}
+
+int main() {
+    string s1, s2;
+    cin >> s1 >> s2;
+
+    if (areAnagrams(s1, s2))
+        cout << "true";
+    else
+        cout << "false";
 }
 ```
