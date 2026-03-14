@@ -115,7 +115,7 @@ int main(){
 }
 ```
 
-### 3. pPrime Factor
+### 3. Prime Factor
 Code:
 ```cpp
 #include<bits/stdc++.h>
@@ -217,10 +217,10 @@ Two strings are considered anagrams if they contain the same characters with exa
 
 Examples:
 
-Input: s1 = "geeks" s2 = "kseeg"
-Output: true 
-Explanation: Both the string have same characters with same frequency. So, they are anagrams.
-Input: s1 = "allergy", s2 = "allergyy" 
+Input: s1 = "geeks" s2 = "kseeg" \n
+Output: true \n
+Explanation: Both the string have same characters with same frequency. So, they are anagrams. \n
+Input: s1 = "allergy", s2 = "allergyy" \n
 Output: false 
 Explanation: Although the characters are mostly the same, s2 contains an extra 'y' character. Since the frequency of characters differs, the strings are not anagrams. 
 Input: s1 = "listen", s2 = "lists" 
