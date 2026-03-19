@@ -274,3 +274,109 @@ int main() {
         cout << "false";
 }
 ```
+
+### 7. Count Subarrays having Sum K
+
+Code:
+```cpp
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int cntSubarrays(vector<int> &arr, int k) {
+  
+    // unordered_map to store prefix sums frequencies
+    unordered_map<int, int> prefixSums;
+  
+    int res = 0;
+    int currSum = 0;
+
+    for (int i = 0; i < arr.size(); i++) {
+        
+        // Add current element to sum so far.
+        currSum += arr[i];
+
+        // If currSum is equal to desired sum, then a new
+        // subarray is found. So increase count of subarrays.
+        if (currSum == k)
+            res++;
+
+        // Check if the difference exists in the prefixSums map.
+        if (prefixSums.find(currSum - k) != prefixSums.end())
+            res += prefixSums[currSum - k];
+
+        // Add currSum to the set of prefix sums.
+        prefixSums[currSum]++;
+    }
+
+    return res;
+}
+
+int main() {
+    vector<int> arr = {10, 2, -2, -20, 10};
+    int k = -10;
+    cout << cntSubarrays(arr, k);
+    return 0;
+}
+```
+
+### 8. Subarray with Given Sum - Handles Negative Numbers
+
+Code:
+```cpp
+// C++ program to print subarray with sum as given sum
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to print subarray with sum as given sum
+void subArraySum(int arr[], int n, int sum)
+{
+    // create an empty map
+    unordered_map<int, int> map;
+
+    // Maintains sum of elements so far
+    int curr_sum = 0;
+
+    for (int i = 0; i < n; i++) {
+        // add current element to curr_sum
+        curr_sum = curr_sum + arr[i];
+
+        // if curr_sum is equal to target sum
+        // we found a subarray starting from index 0
+        // and ending at index i
+        if (curr_sum == sum) {
+            cout << "Sum found between indexes " << 0
+                 << " to " << i << endl;
+            return;
+        }
+
+        // If curr_sum - sum already exists in map
+        // we have found a subarray with target sum
+        if (map.find(curr_sum - sum) != map.end()) {
+            cout << "Sum found between indexes "
+                 << map[curr_sum - sum] + 1 << " to " << i
+                 << endl;
+            return;
+        }
+
+        map[curr_sum] = i;
+    }
+
+    // If we reach here, then no subarray exists
+    cout << "No subarray with given sum exists";
+}
+
+// Driver code
+int main()
+{
+    int arr[] = { 2, 12, -2, -20, 10 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+    int sum = -10;
+
+    // Function call
+    subArraySum(arr, n, sum);
+
+    return 0;
+}
+```
