@@ -1,4 +1,4 @@
-# TCS_NQT_2026_Coding_Questions_Answers
+# TCS_NQT_2026_Coding_Questions_Answers And IBM
 
 ### 1. cryptic_number
 
@@ -274,6 +274,7 @@ int main() {
         cout << "false";
 }
 ```
+## IBM Coding QNA:
 
 ### 7. Count Subarrays having Sum K
 
