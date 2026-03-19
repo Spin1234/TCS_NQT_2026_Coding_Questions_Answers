@@ -428,3 +428,31 @@ class Solution {
     }
 };
 ```
+### 10. GCD of two numbers
+Code:
+```cpp
+class Solution {
+  public:
+    int gcd(int a, int b) {
+        if(b==0) return a;
+        return gcd(b, a%b);
+    }
+};
+```
+### 11. LCM of two numbers
+Code:
+```cpp
+class Solution {
+  public:
+    int gcd(int a, int b){
+        if(b==0) return a;
+        return gcd(b,a%b);
+    }
+    int lcm(int a, int b) {
+        int hcf=gcd(a,b);
+        int lcm = a*b/hcf;
+        return lcm;
+        
+    }
+};
+```
