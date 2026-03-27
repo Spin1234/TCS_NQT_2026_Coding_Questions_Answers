@@ -661,9 +661,9 @@ silent google test
 * **Query 2 ("google"):** The anagrams in the vector are "google" and "googlg". (Both contain letters: g, g, l, o, o, e). **Count = 2**.
 * **Query 3 ("test"):** No anagrams of "test" exist in the vector. **Count = 0**.
 
-  Code:
-  ```cpp
-  #include <bits/stdc++.h>
+Code:
+```cpp
+#include <bits/stdc++.h>
 using namespace std;
 
 vector<int> groupAnagrams(int N, vector<string>& strings, int Q, vector<string>& queries) {
