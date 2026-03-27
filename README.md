@@ -593,3 +593,180 @@ public:
     }
 };
 ```
+### 15. Group Anagram Frequency Tracker
+
+---
+
+# Group Anagram Frequency Tracker
+
+## Problem Description
+You are given a vector of **N** strings and **Q** queries. Each query contains a string, and you need to determine how many anagrams of that query string exist in the original vector. 
+
+Two strings are **anagrams** if they contain the same characters with the same frequencies, regardless of order. You must preprocess the vector efficiently to handle multiple queries quickly using hashmaps or collections.
+
+Your task is to build a frequency map where strings that are anagrams of each other are grouped together, then answer each query by returning the count of strings in the vector that are anagrams of the query string.
+
+## Function Description
+Implement the function `countAnagramGroups`. The function should:
+1. Preprocess the vector of strings by grouping anagrams together using a hashmap.
+2. For each query string, return the count of its anagrams found in the original vector.
+
+### Parameters
+* **N**: An integer representing the number of strings in the vector.
+* **Q**: An integer representing the number of queries.
+* **strings**: A vector/list of N strings from the original vector.
+* **queries**: A vector/list of Q strings representing the query strings.
+
+### Returns
+* A vector of **Q** integers where each integer represents the count of anagrams for the corresponding query string.
+
+---
+
+## Input Format
+1. The first line contains a single integer **N**.
+2. The second line contains **N** space-separated strings.
+3. The third line contains a single integer **Q**.
+4. The fourth line contains **Q** space-separated strings representing the queries.
+
+## Output Format
+Print a single line containing **Q** space-separated integers representing the count of anagrams for each corresponding query.
+
+---
+
+## Constraints
+* $1 \le N \le 10^5$
+* $1 \le Q \le 10^5$
+* $1 \le \text{length of each string} \le 100$
+* All strings contain only lowercase English letters ('a' to 'z').
+* Total characters across all strings $\le 10^6$
+
+---
+
+## Example
+**Sample Input 1**
+```text
+6
+listen silent enlist google googlg inlets
+3
+silent google test
+```
+
+**Sample Output 1**
+```text
+4 2 0
+```
+
+**Explanation**
+* **Query 1 ("silent"):** The anagrams in the vector are "listen", "silent", "enlist", and "inlets". (All contain letters: e, i, l, n, s, t). **Count = 4**.
+* **Query 2 ("google"):** The anagrams in the vector are "google" and "googlg". (Both contain letters: g, g, l, o, o, e). **Count = 2**.
+* **Query 3 ("test"):** No anagrams of "test" exist in the vector. **Count = 0**.
+
+  Code:
+  ```cpp
+  #include <bits/stdc++.h>
+using namespace std;
+
+vector<int> groupAnagrams(int N, vector<string>& strings, int Q, vector<string>& queries) {
+    unordered_map<string, int> freq;
+
+    // Step 1: Build frequency map
+    for (string s : strings) {
+        string key = s;
+        sort(key.begin(), key.end());
+        freq[key]++;
+    }
+
+    // Step 2: Answer queries
+    vector<int> result;
+    for (string q : queries) {
+        string key = q;
+        sort(key.begin(), key.end());
+
+        if (freq.find(key) != freq.end())
+            result.push_back(freq[key]);
+        else
+            result.push_back(0);
+    }
+
+    return result;
+}
+
+int main() {
+    int N;
+    cin >> N;
+
+    vector<string> strings(N);
+    for (int i = 0; i < N; i++) {
+        cin >> strings[i];
+    }
+
+    int Q;
+    cin >> Q;
+
+    vector<string> queries(Q);
+    for (int i = 0; i < Q; i++) {
+        cin >> queries[i];
+    }
+
+    vector<int> ans = groupAnagrams(N, strings, Q, queries);
+
+    for (int x : ans) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+```
+
+Complete Code:
+```cpp
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    vector<string>strings;
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        string data;
+        cin>>data;
+        strings.push_back(data);
+    }
+
+    vector<string>queries;
+    int q;
+    cin>>q;
+    for(int i=0; i<q; i++){
+        string data;
+        cin>>data;
+        queries.push_back(data);
+    }
+
+    unordered_map<string,int>freq;
+
+    for(string s: strings){
+        string key = s;
+        sort(key.begin(),key.end());
+        freq[key]++;
+    }
+
+    vector<int>ans;
+    for(string q:queries){
+        string key = q;
+        sort(key.begin(),key.end());
+        if(freq.find(key)!=freq.end()){
+            ans.push_back(freq[key]);
+        }else{
+            ans.push_back(0);
+        }
+    }
+
+    for(auto it:ans){
+        cout<<it<<" ";
+    }
+
+}
+```
+
+---
+
