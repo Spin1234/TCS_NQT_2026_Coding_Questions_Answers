@@ -767,6 +767,31 @@ int main(){
 
 }
 ```
+### 16. Reverse a Linked List
 
----
+Take two pointer previous(pre) and next, then just reverse the linking between them using current(curr) pointer untill last of linked list.
+
+Code:
+```c
+struct Node *reverseList(struct Node *head) {
+
+    struct Node *curr = head, *prev = NULL, *next;
+
+    // traverse all the nodes of Linked List
+    while (curr != NULL) {
+
+        // store next
+        next = curr->next;
+
+        // reverse current node's next pointer
+        curr->next = prev;
+
+        // move pointers one position ahead
+        prev = curr;
+        curr = next;
+    }
+
+    return prev;
+}
+```
 
