@@ -771,6 +771,8 @@ int main(){
 
 Take two pointer previous(pre) and next, then just reverse the linking between them using current(curr) pointer untill last of linked list.
 
+The idea is to reverse the linked list by changing the direction of links using three pointers: prev, curr, and next. At each step, point the current node to its previous node and then move all three pointers forward until the list is fully reversed.
+
 Code:
 ```c
 struct Node *reverseList(struct Node *head) {
