@@ -843,5 +843,18 @@ int main()
     return 0;
 }
 ```
-### 18. 
+### 18. Last Word Length: Find the length of the last word in a string having words separated by one or multiple spaces and there are trailing non-characters in start and end of the string.
+
+Example:
+
+Input: "Hello   I am Sayak Pal    "
+
+Output: 3
+
+Code:
+```python
+str = input()
+
+print(len(str.strip().split(' ')[-1]))
+```
 
